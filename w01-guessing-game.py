@@ -49,7 +49,7 @@ value_random = random.randint(1, value_max)
 # Give the user instructions as to what he or she will be doing.
 print(f"Guess a number between 1 and {value_max}.")
 
-# Initialize the sentinal and the array of guesses.
+# Initialize variables - array of guesses, guess counter, flag for game looping, and flag for input validation.
 guesses = []
 guess = 0
 done = False
@@ -76,12 +76,15 @@ while not done:
 
     # Make a decision: was the guess too high, too low, or just right.
     if guess == value_random:
+
         # If the user is correct, show how many guesses it took and print the array of guessed numbers.
         print(f"You were able to find the number in {len(guesses)} guesses.\nThe numbers you guessed were: {guesses}")
         done = True
     
+    # Guess was too high
     elif guess >= value_random:
         print("\tToo high!")
     
+    # Guess was too low
     else:
         print("\tToo low!")
