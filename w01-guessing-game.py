@@ -61,9 +61,11 @@ while not done:
     # Prompt the user for a number.
     while not valid_input:
 
-        # Error handling again to make sure input is a positive, non-zero integer
+        # Error handling again to make sure input is valid
         try:
             guess = int(input("> "))
+
+            # Check to see if guess is a non-zero positive integer that is also below the maximum set value
             if guess > 0 and guess <= value_max:
                 valid_input = True
             else:
