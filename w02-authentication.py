@@ -40,6 +40,7 @@ except FileNotFoundError:
 
 # Statement to ensure the file exists before running any other code
 if file_exists:
+
     # Store the json in a temporary dictionary before it is lists
     temp_dict = json.loads(json_string)
 
@@ -54,6 +55,7 @@ if file_exists:
     done = False
     test_case = 1
     while not done:
+
         # User prompting
         if input_or_test == 'y':
             username = input("Username: ")
@@ -62,6 +64,7 @@ if file_exists:
 
         # Test cases
         else:
+
             # Match-case to go through test cases
             match test_case:
                 case 1:
@@ -87,27 +90,35 @@ if file_exists:
                     password = "I fart in your general direction"
                     # Last case, so set done to True
                     done = True
+                
                 # If we reach default case, something went wrong
                 case _:
                     print("Case error - reached default case.")
-                    quit() # Quit before something actually breaks
+                    done = True
+            
+            # Output to see which test case we are on
             print(f"\nTest case {test_case}: {username}, {password}")    
 
 
         # Variable to change if user was authenticated
         authenticated = False
+
         # Loop through usernames
         for i in range(len(usernames)):
+
             # See if user's username exists
             if username == usernames[i]:
+
                 # Username does exist, check password
                 if password == passwords[i]:
+
                     # Success
                     print("You are authenticated!")
                     authenticated = True
-                # Incorrect password, break out of the loop
+
+                # Incorrect password, set i to maximum so loop doesn't contnue
                 else:
-                    break
+                    i = len(usernames)
 
         # Either username doesn't exist or password was incorrect.
         if not authenticated:
