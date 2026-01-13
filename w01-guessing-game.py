@@ -25,13 +25,19 @@ import random
 # Game introduction.
 print("This is the \"guess a number\" game.\nYou try to guess a random number in the smallest number of attempts.\n")
 
+# Variable to make sure input is valid
+valid_input = False
+
 # Prompt the user for how difficult the game will be. Ask for an integer.
-while True:
-    # Error handling
+while not valid_input:
+
+    # Error handling to make sure input is valid
     try:
         value_max = int(input("Pick a positive integer: "))
+
+        # Make sure user enters a positive, non-zero integer
         if value_max > 0:
-            break
+            valid_input = True
         else:
             print("Invalid input. Please enter a positive integer.")
     except ValueError:
@@ -46,16 +52,20 @@ print(f"Guess a number between 1 and {value_max}.")
 # Initialize the sentinal and the array of guesses.
 guesses = []
 guess = 0
+done = False
+valid_input = False
 
 # Play the guessing game.
-while True:
+while not done:
+
     # Prompt the user for a number.
-    while True:
-        # Error handling
+    while not valid_input:
+
+        # Error handling again to make sure input is a positive, non-zero integer
         try:
             guess = int(input("> "))
             if guess > 0 and guess <= value_max:
-                break
+                valid_input = True
             else:
                 print("Invalid guess. Please try again.")
         except ValueError:
@@ -68,7 +78,7 @@ while True:
     if guess == value_random:
         # If the user is correct, show how many guesses it took and print the array of guessed numbers.
         print(f"You were able to find the number in {len(guesses)} guesses.\nThe numbers you guessed were: {guesses}")
-        break
+        done = True
     
     elif guess >= value_random:
         print("\tToo high!")
