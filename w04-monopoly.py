@@ -7,6 +7,7 @@
 # 4. What was the hardest part? Be as specific as possible.
 #      The hardest part of this was finding out which if statements needed to come first in order
 #      to ensure that no unnecessary questions were asked and that the execution was efficient.
+#      Once I figured that out, it was simple to program
 # 5. How long did it take for you to complete the assignment?
 #      1.5 hours
 
