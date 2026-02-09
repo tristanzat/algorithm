@@ -12,11 +12,12 @@
 #      matrix. After that is done, we will loop through the matrix, printing a hashtag whenever the value in the
 #      cell is true or a space whenever the value in the cell is false.
 # 4. Algorithmic Efficiency
-#      -Identify the algorithmic efficiency and tell why it is as you say it is-
+#      The algroithmic efficiency of this code is O(n*m), where n is the number of input rows and m is the number
+#      of input columns. The code has nested loops that run until they reach the maximum number of rows and columns.
 # 5. What was the hardest part? Be as specific as possible.
 #      The most difficult part of the assignment was figuring out how to create the grid. I initially tried syntax
-#      similar to Java probably (gird = [max_rows][max_cols]) but then found out that that was wrong. After looking
-#      up how to make a 2d array in python, I was able to correct that mistake. Having the pseudocode as a reference
+#      similar to Java (grid = [max_rows][max_cols]) but then found out that that was wrong. After looking
+#      up how to make a 2d array in Python, I was able to correct that mistake. Having the pseudocode as a reference
 #      made the programming very simple.
 # 6. How long did it take for you to complete the assignment?
 #      1.5 hours
