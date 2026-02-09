@@ -13,7 +13,8 @@
 #      cell is true or a space whenever the value in the cell is false.
 # 4. Algorithmic Efficiency
 #      The algroithmic efficiency of this code is O(n*m), where n is the number of input rows and m is the number
-#      of input columns. The code has nested loops that run until they reach the maximum number of rows and columns.
+#      of input columns. The code has nested loops that run until they reach the maximum number of rows and columns,
+#      having visited every cell in the image grid.
 # 5. What was the hardest part? Be as specific as possible.
 #      The most difficult part of the assignment was figuring out how to create the grid. I initially tried syntax
 #      similar to Java (grid = [max_rows][max_cols]) but then found out that that was wrong. After looking
