@@ -1,0 +1,82 @@
+Perform the sort by hand with 8 numbers or words.
+33 97 40 82 56 87 81 63
+33 63 40 82 56 87 81|97
+33 63 40 82 56 81|87 97
+33 63 40 81 56|82 87 97
+33 63 40 56|81 82 87 97
+33 56 40|63 81 82 87 97
+33 40|56 63 81 82 87 97
+33|40 56 63 81 82 87 97 
+|33 40 56 63 81 82 87 97 
+
+Describe how you will approach the solution in a paragraph.
+The program will have an array of numbers. It will loop through the array, checking to see if
+the number it is on is the largest by comparing it with the numbers before and after it. When
+it finds the largest number, it swaps it with the number in the index to be sorted into. It
+then continues until the array is sorted.
+
+Generate a pseudocode solution based on your description.
+GET array
+sortIndex <- array.size - 1
+sorted <- False
+WHILE not sorted
+    biggestIndex <- 0
+    FOR i <- 0 ... sortIndex
+        IF array[i] > array[biggestIndex]
+            biggestIndex <- i
+    tempValue <- array[biggestIndex]
+    array[biggestIndex] <- array[sortIndex]
+    array[sortIndex] <- tempValue
+    sortIndex <- sortIndex - 1
+    IF sortIndex = 0
+        sorted = True
+
+
+Generate a pseudocode solution using Microsoft Copilot.
+// array contains the numbers to sort
+array ← [ ... ]
+n ← length(array)
+
+// We will sort the array from the end backward
+FOR sort_index FROM n - 1 DOWN TO 1
+
+    // Assume the largest value is at position 0
+    largest_index ← 0
+
+    // Scan from start up to the current sort_index
+    FOR i FROM 1 TO sort_index
+
+        // Compare current element with the largest found so far
+        IF array[i] > array[largest_index]
+            largest_index ← i
+
+    // Swap the largest element into the sorted position
+    temp ← array[sort_index]
+    array[sort_index] ← array[largest_index]
+    array[largest_index] ← temp
+
+Compare/contrast your solution with Microsoft Copilot.
+My solution and Copilot's solution are very similar. Copilot used an exterior for loop, but my
+exterior loop was a while loop. Functionally, they will be the same, but Copilot's is more
+readable. Copilot's is also slightly more efficient for starting the comparing index at 1 instead
+of 0. I can change my exterior loop to a for loop instead of a while and change my interior loop's
+index to start at 1 instead of 0. I don't think Copilot's solution could be improved. The pseudocode
+does match the by-hand algorithm I did.
+
+Update your design.
+GET array
+n ← length(array)
+FOR sortIndex ← n - 1 ... 1
+    largestIndex ← 0
+    FOR i FROM 1 TO sortIndex
+        IF array[i] > array[largestIndex]
+            largestIndex ← i
+    tempValue ← array[sortIndex]
+    array[sortIndex] ← array[largestIndex]
+    array[largestIndex] ← tempValue
+
+Perform a program trace on a data-set of 4 numbers.
+see google doc
+
+Compute the algorithmic efficiency line-by-line.
+O(n^2)
