@@ -14,7 +14,7 @@
 import json
 
 def start():
-    testing = input("Do test cases (y/n)?").lower()
+    testing = input("Do test cases (y/n)? ").lower()
 
     if testing == "y":
         
