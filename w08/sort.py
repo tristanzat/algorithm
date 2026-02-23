@@ -17,16 +17,36 @@ def start():
     testing = input("Do test cases (y/n)?").lower()
 
     if testing == "y":
+        
+        # Variables for test case selection and looping
         done = False
         test = 1
 
         while not done:
+
+            # Get test case file
             file_input = test_case(test)
+
+            # Run on test case file
             __main__(file_input)
+
+            # Newline for space
             print()
+
+            # Move to next test
+            test += 1
+
+            # Not done if not all tests have gone through
+            if test <= 5:
+                done = False
             
+            # Done if all tests have gone through
+            else:
+                done = True
 
     else:
+
+        # Run on user input
         file_input = user_input()
         __main__(file_input)
     
@@ -133,7 +153,7 @@ def sort_array(array):
             
             array[sort_index], array[largest_index] = array[largest_index], array[sort_index]
     
-    assert_sorted(array)
+    assert(assert_sorted(array))
 
     return array
 
@@ -161,4 +181,4 @@ def assert_sorted(array):
     
     return True
     
-__main__()
+start()
