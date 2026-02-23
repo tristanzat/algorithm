@@ -5,10 +5,10 @@
 # 3. Assignment Description:
 #      This program takes in a file, extracts an array, then performs selection sort on it.
 # 4. What was the hardest part? Be as specific as possible.
-#      The hardest part was finding out where to put asserts since I usually handle that sort of
-#      thing with try-except statements.
+#      The hardest part was finding out where to put asserts. I generally assume that my code works
+#      since I'm the ony one writing and using it.
 # 5. How long did it take for you to complete the assignment?
-#      1 hour
+#      2 hours
 
 # Import json for file handling.
 import json
