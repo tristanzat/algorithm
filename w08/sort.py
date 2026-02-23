@@ -13,13 +13,27 @@
 # Import json for file handling.
 import json
 
-def __main__():
-    # Get user input for the image file.
-    json_file = input("What is the name of the file? ")
+def start():
+    testing = input("Do test cases (y/n)?").lower()
 
-    # Fix file name to match my file structure
-    json_file = "w08/" + json_file
+    if testing == "y":
+        done = False
+        test = 1
 
+        while not done:
+            file_input = test_case(test)
+            __main__(file_input)
+            print()
+            
+
+    else:
+        file_input = user_input()
+        __main__(file_input)
+    
+
+
+def __main__(json_file):
+    
     # Flag to see if the file has been found
     file_exists = False
 
@@ -29,6 +43,9 @@ def __main__():
         with open(json_file) as f:
             json_string = f.read()
         
+        # Assert string has content
+        assert(json_string is not None)
+
         # Set flag so code continues
         file_exists = True
 
@@ -65,9 +82,38 @@ def __main__():
             array = sort_array(array)
             
             # Display the array
+            print(f"The values in {json_file} are:")
             display_array(array)
 
+def user_input():
+    # Get user input for the image file.
+    user_input = input("What is the name of the file? ")
+
+    # Fix file name to match my file structure
+    user_input = "w08/" + user_input
+
+    return user_input
+
+def test_case(case_number):
+    match (case_number):
+        case 1:
+            return "w08/Lab08.empty.json"
+        case 2:
+            return "w08/Lab08.trivial.json"
+        case 3:
+            return "w08/Lab08.languages.json"
+        case 4:
+            return "w08/Lab08.states.json"
+        case 5:
+            return "w08/Lab08.cities.json"
+        case default:
+            assert(False)
+            return ""
+
 def sort_array(array):
+
+    # Assert array is a list
+    assert isinstance(array, list)
     
     # Array needs more than 1 element to be sorted
     if len(array) <= 1:
@@ -87,12 +133,32 @@ def sort_array(array):
             
             array[sort_index], array[largest_index] = array[largest_index], array[sort_index]
     
+    assert_sorted(array)
+
     return array
 
 def display_array(array):
     
+    # Assert array is a list
+    assert isinstance(array, list)
+
     # Display items on new lines with a tab before each
     for item in array:
         print(f"\t{item}")
+
+def assert_sorted(array):
+
+    # Assert array is a list
+    assert isinstance(array, list)
+
+    # Sorted if array has one or zero items
+    if len(array) <= 1:
+        return True
+
+    # Loop through and compare
+    for i in range(1, len(array) - 1):
+        assert(array[i-1] < array[i])
+    
+    return True
     
 __main__()
