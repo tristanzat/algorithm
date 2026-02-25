@@ -28,7 +28,7 @@ def start():
             file_input = test_case(test)
 
             # Run on test case file
-            __main__(file_input)
+            main(file_input)
 
             # Newline for space
             print()
@@ -48,11 +48,11 @@ def start():
 
         # Run on user input
         file_input = user_input()
-        __main__(file_input)
+        main(file_input)
     
 
 
-def __main__(json_file):
+def main(json_file):
     
     # Flag to see if the file has been found
     file_exists = False
