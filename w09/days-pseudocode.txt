@@ -1,0 +1,88 @@
+GET startDate
+GET endDate
+PUT daysBetween(startDate, endDate)
+
+isLeapYear (year)
+	// quad-centries - yes
+	IF year % 400 = 0
+		return true
+	// non-quad-centuries - no
+	ELSE IF year % 100 = 0
+		return false
+	// div by 4 - yes
+	ELSE IF year % 4 = 0
+		return true
+	// not a leap year
+	return false
+
+getDays (month, year)
+	SWITCH month
+		CASE 1
+			return 31
+		CASE 2
+			IF isLeapYear(year)
+				return 29
+			return 28
+		CASE 3
+			return 31
+		CASE 4
+			return 30
+		CASE 5
+			return 31
+		CASE 6
+			return 30
+		CASE 7
+			return 31
+		CASE 8
+			return 31
+		CASE 9
+			return 30
+		CASE 10
+			return 31
+		CASE 11
+			return 30
+		CASE 12
+			return 31
+
+daysBetween (start, end)
+	startMonth <- start.getMonth()
+	startDay <- start.getDay()
+	startYear <- start.getYear()
+	endMonth <- end.getMonth()
+	endDay <- end.getDay()
+	endYear <- end.getYear()
+
+    	// same month and year
+	IF startMonth = endMonth AND startYear = endYear
+		return endDay - startDay
+    	// different months
+	ELSE
+		total <- endDay
+		total <- total + (getDays(startMonth, startYear) - startDay)
+		// same year
+		IF startYear = endYear
+            	// days for months between start and end
+			FOR month <- startMonth + 1 ... endMonth - 1
+                		total <- total + getDays(month, startYear)
+            	return total
+		// different years
+        ELSE
+            // days between start date and end of year
+            IF startMonth not 12
+                FOR month <- startMonth + 1 ... 12
+                    total <- total + getDays(month, startYear) 
+            // make sure end date isn't in January for this
+            IF endMonth not 1
+                    // days between start of year and end month
+                    FOR month <- 1 ... endMonth - 1
+                        total <- total + getDays(month, endYear)
+            // make sure year gap is more than 1 for this
+            IF (endYear - startYear) > 1
+                    // days in years between start and end
+                    FOR year <- startYear + 1 ... endYear - 1
+                    IF isLeapYear(year)
+                            total <- total + 366
+                        ELSE
+                            total <- total + 365
+            // done
+            return total
