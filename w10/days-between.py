@@ -8,7 +8,7 @@
 #      The hardest part of this assignment was making the asserts. It was relatively simple, though.
 #      I used AI to help make the test cases work in one run of the program.
 # 5. How long did it take for you to complete the assignment?
-#      1.5 hours
+#      2 hours
 
 def run_test_cases():
     test_cases = [
@@ -109,12 +109,27 @@ def start():
         return
 
     else:
-        start_year = int(input("Start year: "))
-        start_month = int(input("Start month: "))
-        start_day = int(input("Start day: "))
-        end_year = int(input("End year: "))
-        end_month = int(input("End month: "))
-        end_day = int(input("End day: "))
+        done = False
+        while not done:
+            try:
+                start_year = int(input("Start year: "))
+                start_month = int(input("Start month: "))
+                start_day = int(input("Start day: "))
+                end_year = int(input("End year: "))
+                end_month = int(input("End month: "))
+                end_day = int(input("End day: "))
+
+                # Make sure values are acceptable to run
+                if ((start_year > 1752) and (end_year > 1752) and (start_month > 0) and (start_month < 13) and (end_month > 0) and (end_month < 13) and (start_day > 0) and (start_day < get_days(start_month, start_year)) and (end_day > 0) and (end_day < get_days(end_month, end_year)) and assert_chronological_dates(start_month, start_day, start_year, end_month, end_day, end_year)):
+                    done = True
+                else:
+                    raise TypeError
+            # I think it should be a TypeError but it's a ValueError so whatever
+            except ValueError as e:
+                print(f"Dates must be integer values.\nMessage: {e}\n")
+            # Use the exception I raised earlier
+            except TypeError:
+                print(f"Dates must be in chronological order; years must be after 1752; days must be between 1 and max days of the month; months must be between 1 and 12.\n")
         
         days_between = main(start_month, start_day, start_year, end_month, end_day, end_year)
 
