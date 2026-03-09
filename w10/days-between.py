@@ -106,7 +106,6 @@ def start():
 
     if testing == "y":
         run_test_cases()
-        return
 
     else:
         done = False
